@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <i class="icon-home">🏠</i>
+        <i class="icon-products">📦</i>
+        <i class="icon-sales">🛒</i>
+        <i class="icon-reports">📊</i>
+        <i class="icon-settings">⚙️</i>
+    </div>
+
+    <div class="content">
+        <div class="header">
+            <h1>DashBoard</h1>
+            <div class="icons">
+                <i class="icon-bell">🔔</i>
+                <i class="icon-user">👤</i>
+            </div>
+        </div>
+
+        <div class="dashboard-metrics">
+            <div class="metric">
+                <h3>Vendas de Hoje</h3>
+                <p>R$ 00.000,00</p>
+            </div>
+            <div class="metric">
+                <h3>Vendas no Mês</h3>
+                <p>R$ 00.000,00</p>
+            </div>
+            <div class="metric">
+                <h3>Melhor Vendedor</h3>
+                <p>R$ 00.000,00</p>
+            </div>
+            <div class="metric">
+                <h3>Lucro Mensal</h3>
+                <p>R$ 00.000,00</p>
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart">
+                <h3>Os gastos públicos crescem mais que a renda consistentemente</h3>
+                <canvas id="gastosPublicosChart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Despesa Primária (% do PIB)</h3>
+                <canvas id="despesaPrimariaChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
