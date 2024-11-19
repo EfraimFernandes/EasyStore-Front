@@ -5,23 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a43f59c87b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="sidebar">
-        <i class="icon-home">🏠</i>
-        <i class="icon-products">📦</i>
-        <i class="icon-sales">🛒</i>
-        <i class="icon-reports">📊</i>
-        <i class="icon-settings">⚙️</i>
+    <div class="sidebar" id="sidebar">
+        <button class="toggle-btn" id="toggle-btn">☰</button>
+        <div class="sidebar-content">
+            <h2 id="sidebar-title">EasyStore</h2>
+            <div class="menu-item">
+                <i class="icon"><i class="fa-solid fa-chart-line"></i></i> <span>DashBoard</span>
+            </div>
+            <div class="menu-item">
+                <i class="icon"><i class="fa-solid fa-boxes-stacked"></i></i> <span>Estoque</span>
+            </div>
+            <div class="menu-item">
+                <i class="icon"><i class="fa-solid fa-users"></i></i> <span>Funcionários</span>
+            </div>
+        </div>
     </div>
 
     <div class="content">
         <div class="header">
             <h1>DashBoard</h1>
             <div class="icons">
-                <i class="icon-bell">🔔</i>
-                <i class="icon-user">👤</i>
+                <i class="icon-bell"><i class="fa-solid fa-bell"></i></i>
+                <i class="icon-user"><i class="fa-solid fa-user"></i></i>
             </div>
         </div>
 
@@ -29,18 +38,22 @@
             <div class="metric">
                 <h3>Vendas de Hoje</h3>
                 <p>R$ 00.000,00</p>
+                <p>0% / 100%</p>
             </div>
             <div class="metric">
                 <h3>Vendas no Mês</h3>
                 <p>R$ 00.000,00</p>
+                <p>0% / 100%</p>
             </div>
             <div class="metric">
                 <h3>Melhor Vendedor</h3>
                 <p>R$ 00.000,00</p>
+                <p>0% / 100%</p>
             </div>
             <div class="metric">
                 <h3>Lucro Mensal</h3>
                 <p>R$ 00.000,00</p>
+                <p>0% / 100%</p>
             </div>
         </div>
 
