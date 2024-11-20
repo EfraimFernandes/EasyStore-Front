@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../Styles/styleDashboard.css">
     <script src="https://kit.fontawesome.com/a43f59c87b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar collapsed" id="sidebar">
         <button class="toggle-btn" id="toggle-btn">☰</button>
         <div class="sidebar-content">
             <h2 id="sidebar-title">EasyStore</h2>
-            <div class="menu-item">
-                <i class="icon"><i class="fa-solid fa-chart-line"></i></i> <span>DashBoard</span>
-            </div>
-            <div class="menu-item">
-                <i class="icon"><i class="fa-solid fa-boxes-stacked"></i></i> <span>Estoque</span>
-            </div>
-            <div class="menu-item">
-                <i class="icon"><i class="fa-solid fa-users"></i></i> <span>Funcionários</span>
-            </div>
+            <a href="../Pages/dashboard.html">
+                <div class="menu-item">
+                    <i class="icon"><i class="fa-solid fa-chart-line"></i></i> <span>DashBoard</span>
+                </div>
+            </a>
+            <a href="../Pages/cadastroProdutos.html">
+                <div class="menu-item">
+                    <i class="icon"><i class="fa-solid fa-boxes-stacked"></i></i> <span>Estoque</span>
+                </div>
+            </a>
+            <a href="../Pages/cadastroUsuario.html">
+                <div class="menu-item">
+                    <i class="icon"><i class="fa-solid fa-users"></i></i> <span>Funcionários</span>
+                </div>
+            </a>
         </div>
     </div>
 
@@ -69,6 +75,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../Scripts/scriptDashboard.js"></script>
 </body>
 </html>
