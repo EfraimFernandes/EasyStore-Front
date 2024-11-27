@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <br>
     <title>Funcionários</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a43f59c87b.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Barra Lateral -->
-    <div class="sidebar">
-        <div style="color: white;" class="sidebar-item1">☰</div>
-        <div style="color: white;" class="sidebar-item"><i class="fa-solid fa-chart-line" alt="Dashboard"></i></div>
-        <div style="color: white;" class="sidebar-item"><i class="fa-solid fa-boxes-stacked" alt="Produtos"></i></div>
-        <div style="color: white;" class="sidebar-item"><i class="fa-solid fa-users"alt="Funcionários"></i></div>
-        <div style="color: white;" class="sidebar-item"></div>
+    <div class="sidebar" id="sidebar">
+        <button class="toggle-btn" id="toggle-btn">
+            ☰
+            <span id="sidebar-title">EasyStore</span>
+        </button>
+        <div class="sidebar-content">
+            <div class="menu-item">
+                <i class="fa-solid fa-chart-line"></i> <span>DashBoard</span>
+            </div>
+            <div class="menu-item">
+                <i class="fa-solid fa-boxes-stacked"></i> <span>Estoque</span>
+            </div>
+            <div class="menu-item">
+                <i class="fa-solid fa-users"></i> <span>Funcionários</span>
+            </div>
+        </div>
     </div>
 
     <!-- Conteúdo Principal -->
     <div class="main-content">
         <!-- Barra Superior -->
         <div class="topbar">
-            <h1>Funcionários</h1>
             <div class="topbar-icons">
                 <i class="fa-solid fa-bell"></i>
                 <i class="fa-solid fa-user"></i>
             </div>
         </div>
+        <h1>Funcionários</h1>
 
         <!-- Cards de Funcionários -->
         <div class="card-container">
@@ -38,13 +49,12 @@
                 <div class="card-body">
                     <h2>Efraim</h2>
                     <p>Vendedor</p>
-                    <p>Re: .6666666</p>
+                    <p>RE: 6666666</p>
                 </div>
-                
             </div>
 
             <!-- Card de Adição de Funcionário -->
-            <div class="card add-card">
+            <div class="card add-card" id="addUserBtn">
                 <div class="card-header">
                     <div class="add-icon">+</div>
                 </div>
@@ -59,5 +69,40 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div id="addUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-left">
+                <div class="add-photo">
+                    <div class="add-icon">+</div>
+                </div>
+                <p>Adicionar<br>Foto</p>
+            </div>
+            <div class="modal-right">
+                <form>
+                    <div class="form-row">
+                        <input type="text" id="name" name="name" placeholder="Nome">
+                        <input type="text" id="re" name="re" placeholder="Re">
+                    </div>
+                    <div class="form-row">
+                        <select id="role" name="role">
+                            <option value="" disabled selected>Cargo</option>
+                            <option value="vendedor">Vendedor</option>
+                            <option value="gerente">Gerente</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <input type="password" id="password" name="password" placeholder="Senha">
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmar">
+                    </div>
+                    <button type="submit" class="submit-btn">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

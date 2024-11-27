@@ -11,87 +11,128 @@
 body {
     display: flex;
     background-color: #f4f4f4;
+    min-height: 100vh;
 }
 
+/* Sidebar */
 .sidebar {
-    width: 70px;
+    width: 250px;
     background-color: #00220f;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
+    align-items: flex-start;
+    padding-top: 10px;
     height: 100vh;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    position: fixed; /* Fixando a sidebar */
+    z-index: 1000;
 }
 
-.sidebar-item {
-    font-size: 17px;
-    margin: 20px 0;
-    width: 50px;
-    height: 50px;
+.sidebar.closed {
+    width: 70px;
+}
+
+.sidebar-content {
+    width: 100%;
+    padding: 10px;
+}
+
+.sidebar .toggle-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-}
-
-.sidebar-item1{
-    font-size: 30px;
-    margin: 20px 0;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    margin-top: -15px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-}
-
-.sidebar-item img {
-    width: 30px;
-    height: 30px;
-}
-
-.sidebar-item.active,
-.sidebar-item:hover {
-    background-color: #1f4d34;
-}
-
-.sidebar-item1.active,
-.sidebar-item1:hover {
-    background-color: #1f4d34;
-}
-
-.main-content {
-    flex: 1;
-    padding: 20px;
-}
-
-.topbar {
-    width: 102.8%;
-    background-color: #00220f;
     color: white;
-    margin-left: -20px;
-    margin-top: -20px;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.topbar h1 {
     font-size: 24px;
+    border: none;
+    background: none;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
-.topbar-icons i{
+#sidebar-title {
+    color: white;
     font-size: 20px;
+    margin-left: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.closed #sidebar-title {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item i {
     margin-right: 10px;
 }
 
+.sidebar.closed .menu-item span {
+    display: none;
+    transition: background-color 0.5s ease;
+}
+
+.sidebar.closed .toggle-btn{
+    margin-left: 20px;
+}
+.menu-item:hover {
+    background-color: #1f4d34;
+    border-radius: 5px;
+}
+
+/* Topbar */
+.topbar {
+    width: calc(102.8% ); /* Ajusta a largura para compensar a sidebar */
+    background-color: #00220f;
+    color: white;
+    padding: 20px 20px;
+    display: flex;
+    margin-top: -20px; /* Ajuste de margem para compensar a sidebar */
+    justify-content: space-between;
+    margin-left: -20px;
+    align-items: center;
+    position: relative;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.sidebar.closed ~ .topbar {
+    margin-left: 60px; /* Ajusta a posição da topbar quando a sidebar estiver fechada */
+    width: calc(102.8% - 60px); /* Ajusta a largura da topbar quando a sidebar estiver fechada */
+}
+
+/* Ícones da Topbar */
+.topbar-icons {
+    position: absolute;
+    right: 20px;
+    font-size: 18px;
+}
+
+.fa-bell {
+    margin-right: 7px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px; /* Espaço para a sidebar */
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.closed ~ .main-content {
+    margin-left: 70px; /* Ajuste a margem quando a sidebar estiver fechada */
+}
+
+/* Cards */
 .card-container {
     display: flex;
     gap: 20px;
@@ -114,15 +155,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
     border-radius: 0 0 120px 0;
+}
+
+.add-icon {
+    font-size: 70px;
+    color: white;
 }
 
 .card-header img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-
 }
 
 .card-body {
@@ -131,25 +175,12 @@ body {
     padding: 15px;
 }
 
-.card-body h2 {
-    font-size: 18px;
-    margin-bottom: 5px;
-    color: #00220f;
-}
-
-.card-body p {
-    font-size: 14px;
-    color: #444444;
-}
-
 .card-footer {
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
 }
 
 .card-footer img {
@@ -157,18 +188,123 @@ body {
     height: 40px;
     object-fit: contain;
     border-radius: 8px;
-
-}
-.card-footer h2{
-margin-left: 5px;
 }
 
-.card .add-card{
-color: white;
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
 }
 
-.add-card .add-icon {
-    font-size: 75px;
-    color: white;
+.modal-content {
+    display: flex;
+    background: #fff;
+    width: 600px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    color: #444;
+    cursor: pointer;
+}
+
+.modal-left {
+    width: 35%;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.add-photo {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.add-photo .add-icon {
+    font-size: 60px;
+    color: #00220f;
     font-weight: bold;
+}
+
+.modal-left p {
+    margin-top: 10px;
+    font-size: 28px;
+    color: #444;
+    text-align: center;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.modal-right {
+    width: 65%;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.modal-right form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+input,
+select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button.submit-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #00220f;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.submit-btn:hover {
+    background-color: #004c29;
+}
+
+h1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 42px;
 }
